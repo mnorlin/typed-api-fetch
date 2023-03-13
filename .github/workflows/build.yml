@@ -36,3 +36,34 @@ jobs:
       - run: npm ci
       - run: npm run build
       - run: npm run test:ci
+
+  release:
+    name: Release
+    permissions:
+      pull-requests: write
+      contents: write
+    needs: [test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        id: release-please
+        uses: google-github-actions/release-please-action@v3
+        with:
+          release-type: node
+          package-name: release-please-action
+          bump-minor-pre-major: true
+      - uses: actions/checkout@v3
+        if: ${{ steps.release-please.outputs.release_created }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          registry-url: "https://registry.npmjs.org"
+        if: ${{ steps.release-please.outputs.release_created }}
+      - run: npm ci
+        if: ${{ steps.release-please.outputs.release_created }}
+      - run: npm run build
+        if: ${{ steps.release-please.outputs.release_created }}
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        if: ${{ steps.release-please.outputs.release_created }}

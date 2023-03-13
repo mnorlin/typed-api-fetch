@@ -17,13 +17,13 @@
     "prepeare": "husky install"
   },
   "devDependencies": {
-    "@types/jest": "29.2.4",
+    "@types/jest": "29.4.0",
     "@typescript-eslint/eslint-plugin": "5.54.1",
     "@typescript-eslint/parser": "5.47.1",
     "eslint": "8.30.0",
     "eslint-config-prettier": "8.5.0",
     "husky": "8.0.2",
-    "jest": "29.2.2",
+    "jest": "29.5.0",
     "jest-junit": "15.0.0",
     "prettier": "2.8.4",
     "ts-jest": "29.0.3",

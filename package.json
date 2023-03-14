@@ -2,6 +2,24 @@
   "name": "typed-api-fetch",
   "version": "0.1.0",
   "description": "Generate a typed fetch method from a typescript definition",
+  "license": "MIT",
+  "homepage": "https://github.com/mnorlin/typed-api-fetch#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mnorlin/typed-api-fetch"
+  },
+  "bugs": {
+    "url": "https://github.com/mnorlin/typed-api-fetch/issues"
+  },
+  "keywords": [
+    "fetch",
+    "client",
+    "typescript",
+    "ts",
+    "swagger",
+    "openapi",
+    "openapi 3"
+  ],
   "main": "dist/index.js",
   "files": [
     "dist",

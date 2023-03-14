@@ -28,7 +28,7 @@ function fetchFactory<Paths>(options?: InitParameters) {
     const options = init as FetchOptions;
 
     const path = getPath(input as string, options.parameters?.path);
-    const query = getQuery({ ...options.parameters?.query });
+    const query = getQuery(options.parameters?.query);
     const url = basePath + path + query;
 
     const fetchInit = buildInit(defaultInit, options);
@@ -66,7 +66,10 @@ function getPath(path: string, pathParams?: Record<string, string | number>) {
   });
 }
 
-function getQuery(params: Record<string, string | number>): string {
+function getQuery(params?: Record<string, string | number>): string {
+  if (!params) {
+    return "";
+  }
   const searchParams = new URLSearchParams(params as Record<string, string>);
   return Object.keys(params).length == 0 ? "" : `?${searchParams.toString()}`;
 }

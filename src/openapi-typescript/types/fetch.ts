@@ -7,7 +7,7 @@ import {
 /**
  * Options of the constructed <pre>fetch</pre> method.
  */
-export interface FetchOptions<Operation = unknown, Method = unknown>
+export interface FetchOptions<Operation = never, Method = never>
   extends Omit<RequestInit, "body" | "method"> {
   method: Method;
   parameters: OptionalFetchParameters<Operation>;
@@ -40,8 +40,16 @@ type Method = "get" | "post" | "put" | "patch" | "delete" | "head" | "options";
 
 type OptionalFetchParameters<Operation> = Omit<
   FetchParameters<Operation>,
-  | (OperationPathParameters<Operation> extends never ? "path" : never)
-  | (OperationQueryParameters<Operation> extends never ? "query" : never)
+  | (Operation extends never
+      ? never
+      : OperationPathParameters<Operation> extends never
+      ? "path"
+      : never)
+  | (Operation extends never
+      ? never
+      : OperationQueryParameters<Operation> extends never
+      ? "query"
+      : never)
 >;
 
 type FetchParameters<Operation = unknown> = {

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Generate a typed fetch method from a typescript definition",
   "license": "MIT",
+  "author": "mnorlin",
   "homepage": "https://github.com/mnorlin/typed-api-fetch#readme",
   "repository": {
     "type": "git",
@@ -16,6 +17,7 @@
     "client",
     "typescript",
     "ts",
+    "openapi-typescript",
     "swagger",
     "openapi",
     "openapi 3"

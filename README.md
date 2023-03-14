@@ -100,4 +100,4 @@ if (response.status === 404) {
 
 ## Acknowledgment
 
-Inspired by [openapi-typescript-fetch](https://github.com/ajaishankar/openapi-typescript)
+Inspired by [openapi-typescript-fetch](https://github.com/ajaishankar/openapi-typescript-fetch)

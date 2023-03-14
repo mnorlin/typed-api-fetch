@@ -58,7 +58,7 @@
     "clearMocks": true,
     "coverageThreshold": {
       "global": {
-        "lines": 0
+        "lines": 95
       }
     },
     "coverageDirectory": "./test_reports/coverage",

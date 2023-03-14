@@ -63,7 +63,7 @@ const response = await fetch(
 );
 ```
 
-The `fetch(path, options)` takes a second argument `options`. It has the same properties as the [global `fetch` function](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options), but with a few differences.
+The `fetch` function takes two arguments, `path` and `options`. `options` has the same properties as the [global `fetch` function](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options), but with a few differences.
 
 | Name         | Type     | Default | Description                                                                                    |
 | :----------- | :------- | :------ | :--------------------------------------------------------------------------------------------- |
@@ -83,18 +83,18 @@ the resolved path would be `/pet/42?page=3`.
 
 ### Infer the response body
 
-An API can declare different response type for each status code.
+An API can declare different response types for each status code.
 These can be accessed via a `discriminated union` on either the `status` or `ok` property of the `response` object.
 
 ```ts
 const response = await fetch("/users", { method: "get" });
 
 if (response.ok) {
-  const dataOk = await response.json(); // Infer the type of HTTP 2XX status codes
+  const dataOk = await response.json(); // Infered type of HTTP 2XX status codes
 }
 
 if (response.status === 404) {
-  const data404 = await response.json(); // Infer the type on HTTP 404 status responses
+  const data404 = await response.json(); // Infered type on HTTP 404 status responses
 }
 ```
 

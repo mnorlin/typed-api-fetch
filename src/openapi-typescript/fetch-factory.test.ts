@@ -1,6 +1,6 @@
-import { FetchFactory } from "../openapi-typescript/fetch-factory";
-import { components, paths } from "./example/petstore-openapi3";
-import { IsEqual } from "./tools";
+import { FetchFactory } from "./fetch-factory";
+import { paths, components } from "./test-data/petstore-openapi3";
+import { IsEqual } from "../types/test-tools";
 
 const mockedJson = jest.fn(() => ({} as any));
 

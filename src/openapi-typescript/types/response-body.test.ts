@@ -1,6 +1,6 @@
-import { OperationResponseTypes } from "../openapi-typescript/types/response-body";
-import { operations } from "./example/petstore-openapi3";
-import { IsEqual } from "./tools";
+import { OperationResponseTypes } from "./response-body";
+import { operations } from "../test-data/petstore-openapi3";
+import { IsEqual } from "../../types/test-tools";
 
 describe("infer response body", () => {
   it("exist", () => {

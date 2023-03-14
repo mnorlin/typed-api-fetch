@@ -2,9 +2,9 @@ import {
   OperationHttpHeaders,
   OperationPathParameters,
   OperationQueryParameters,
-} from "../openapi-typescript/types/request-parameters";
-import { operations } from "./example/petstore-openapi3";
-import { IsNever, IsEqual } from "./tools";
+} from "./request-parameters";
+import { operations } from "../test-data/petstore-openapi3";
+import { IsNever, IsEqual } from "../../types/test-tools";
 
 describe("infer parameter", () => {
   describe("path", () => {

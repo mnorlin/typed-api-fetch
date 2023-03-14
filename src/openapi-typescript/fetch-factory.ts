@@ -4,7 +4,7 @@ import {
   FetchOptions,
   OpenapiPaths,
   OptionalFetchOptions,
-} from "./types/fetch";
+} from "./types/fetch-options";
 
 export const FetchFactory = {
   build: <Paths extends OpenapiPaths<Paths>>(options?: InitParameters) => {

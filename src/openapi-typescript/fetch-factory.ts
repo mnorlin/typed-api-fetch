@@ -71,5 +71,5 @@ function getQuery(params?: Record<string, string | number>): string {
     return "";
   }
   const searchParams = new URLSearchParams(params as Record<string, string>);
-  return Object.keys(params).length == 0 ? "" : `?${searchParams.toString()}`;
+  return "?" + searchParams.toString();
 }

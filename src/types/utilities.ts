@@ -12,3 +12,10 @@ type Enumerate<
 > = Acc["length"] extends N
   ? Acc[number]
   : Enumerate<N, [...Acc, Acc["length"]]>;
+
+/**
+ * Creates a readonly version of an object
+ */
+export type Immutable<T> = {
+  readonly [K in keyof T]: Immutable<T[K]>;
+};

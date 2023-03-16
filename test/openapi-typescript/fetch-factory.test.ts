@@ -1,6 +1,7 @@
 import { FetchFactory } from "../../src/openapi-typescript/fetch-factory";
 import { paths, components } from "./test-data/petstore-openapi3";
 import { IsEqual } from "../test-tools";
+import { Immutable } from "../../src/types/utilities";
 
 const mockedJson = jest.fn(() => ({} as any));
 const mockedFetch = jest.fn(() => ({ ok: true, json: mockedJson } as any));
@@ -280,7 +281,8 @@ describe("Generated fetch response", () => {
 
     if (response.ok) {
       const payload = await response.json();
-      const equals: IsEqual<typeof payload, PetType> = true;
+
+      const equals: IsEqual<typeof payload, Immutable<PetType>> = true;
       expect(equals).toBe(true);
     } else {
       const payload = await response.json();
@@ -297,13 +299,13 @@ describe("Generated fetch response", () => {
 
     if (response.status === 200) {
       const payload = await response.json();
-      const equals: IsEqual<typeof payload, PetType> = true;
+      const equals: IsEqual<typeof payload, Immutable<PetType>> = true;
       expect(equals).toBe(true);
     }
 
     if (response.status === 400) {
       const payload = await response.json();
-      const never: IsEqual<typeof payload, unknown> = true;
+      const never: IsEqual<typeof payload, never> = true;
       expect(never).toBe(true);
     }
   });

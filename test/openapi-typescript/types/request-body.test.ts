@@ -1,6 +1,6 @@
-import { OperationRequestBody } from "./request-body";
+import { OperationRequestBody } from "../../../src/openapi-typescript/types/request-body";
 import { operations } from "../test-data/petstore-openapi3";
-import { IsNever, Same } from "../../types/test-tools";
+import { IsNever, Same } from "../../test-tools";
 
 describe("infer request body", () => {
   it("exist", () => {

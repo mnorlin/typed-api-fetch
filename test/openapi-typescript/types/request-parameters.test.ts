@@ -2,7 +2,7 @@ import {
   OperationHttpHeaders,
   OperationPathParameters,
   OperationQueryParameters,
-} from "../../../src/openapi-typescript/types/request-parameters";
+} from "../../../src/openapi-typescript";
 import { operations } from "../test-data/petstore-openapi3";
 import { IsNever, IsEqual } from "../../test-tools";
 

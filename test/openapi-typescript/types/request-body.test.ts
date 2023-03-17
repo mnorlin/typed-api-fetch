@@ -1,4 +1,4 @@
-import { OperationRequestBody } from "../../../src/openapi-typescript/types/request-body";
+import { OperationRequestBody } from "../../../src/openapi-typescript";
 import { operations } from "../test-data/petstore-openapi3";
 import { IsNever, Same } from "../../test-tools";
 

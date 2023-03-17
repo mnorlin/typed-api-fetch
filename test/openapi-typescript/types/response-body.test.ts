@@ -1,4 +1,4 @@
-import { OperationResponseTypes } from "../../../src/openapi-typescript/types/response-body";
+import { OperationResponseTypes } from "../../../src/openapi-typescript";
 import { operations } from "../test-data/petstore-openapi3";
 import { IsEqual } from "../../test-tools";
 

@@ -98,6 +98,85 @@ if (response.status === 404) {
 }
 ```
 
+## Utility types
+
+The `Operation` and `Paths` are the generated types from `openapi-typescript`.
+
+| Name                                  | Description                                                                             |
+| :------------------------------------ | :-------------------------------------------------------------------------------------- |
+| `FetchOptions<Operation>`             | The `options` argument for the `fetch` function from a given `Operation`                |
+| `FetchParameters<Operation>`          | The `parameters` property withing `options`, containing the `path` and `query` property |
+| `ResponseBody<Operation, StatusCode>` | The response body given a specific HTTP `StatusCode`                                    |
+| `ResponseBodyError<Operation>`        | The response body for error responses (HTTP status code 300-599)                        |
+| `ResponseBodySucess<Operation>`       | The response body for error responses (HTTP status code 200-299)                        |
+| `SubPaths<Paths, Method>`             | The paths given a specified HTTP `Method`.                                              |
+
+### Example implmentations
+
+Using the utility types, you can write a custom implementation using the generated `fetch` function. Below is an example of a React hook, that takes takes two arguments, `paths` and `parameters`, and returns the response of a successfull request. The available `paths` are only valid HTTP `GET` requests to the API.
+
+```tsx
+import { useEffect, useState } from "react";
+import { FetchFactory } from "typed-api-fetch";
+import type {
+  ResponseBodySucess,
+  FetchParameters,
+  SubPaths,
+} from "typed-api-fetch";
+import { paths } from "./petstore-openapi3";
+
+const fetch = FetchFactory.build<paths>();
+
+export function useGet<
+  GetPath extends SubPaths<paths, "get">,
+  Operation extends paths[GetPath]["get"]
+>(path: GetPath, parameters?: FetchParameters<Operation>) {
+  const [data, setData] = useState<ResponseBodySucess<Operation>>();
+
+  useEffect(() => {
+    fetchDataFromApi();
+  }, [JSON.stringify(parameters)]);
+
+  async function fetchDataFromApi() {
+    const response = await fetch(path, { method: "get", parameters } as any);
+    if (response.ok) {
+      const payload = await response.json();
+      setData(payload as ResponseBodySucess<Operation>);
+    }
+  }
+
+  return data;
+}
+```
+
+This enables the use of typed API data in a React component
+
+```tsx
+import { ChangeEvent, useState } from "react";
+import { useGet } from "./useGet";
+
+function MyComponent() {
+  const [petId, setPetId] = useState(0);
+
+  const data = useGet("/pet/{petId}", { path: { petId } });
+
+  function handleChange(e: ChangeEvent<HTMLInputElement>) {
+    setPetId(parseInt(e.target.value));
+  }
+
+  if (!data) {
+    return "Nothing to show";
+  }
+
+  return (
+    <>
+      <h1>{data.name}</h1>
+      <input type="number" onChange={handleChange} value={petId} />
+    </>
+  );
+}
+```
+
 ## Acknowledgment
 
 Inspired by [openapi-typescript-fetch](https://github.com/ajaishankar/openapi-typescript-fetch)

@@ -1,4 +1,4 @@
-import { FetchFactory } from "../../src/openapi-typescript/fetch-factory";
+import { FetchFactory } from "../../src/openapi-typescript";
 import { paths, components } from "./test-data/petstore-openapi3";
 import { IsEqual } from "../test-tools";
 import { Immutable } from "../../src/types/utilities";

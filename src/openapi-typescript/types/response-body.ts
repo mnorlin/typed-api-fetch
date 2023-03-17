@@ -43,3 +43,31 @@ export type OperationResponseTypes<
 type JsonBody<ResponseBody, ContentType extends string> = {
   content: { [key in ContentType]: ResponseBody };
 };
+
+/**
+ * Extracts the type of a response body, based on the HTTP status code
+ */
+export type ResponseBody<
+  Operation,
+  StatusCode = "default"
+> = StatusCode extends keyof OperationResponseTypes<Operation>
+  ? OperationResponseTypes<Operation>[StatusCode]
+  : never;
+
+/**
+ * Returns the response body for successful requests.
+ * It ensures that only successful responses (status code of 2XX) are considered.
+ */
+export type ResponseBodySucess<Operation> = ResponseBody<
+  Operation,
+  IntRange<200, 299>
+>;
+
+/**
+ * Returns the response body for unsuccessful requests.
+ * It ensures that only error responses (status code of 300-599) are considered.
+ */
+export type ResponseBodyError<Operation> = ResponseBody<
+  Operation,
+  IntRange<300, 599>
+>;

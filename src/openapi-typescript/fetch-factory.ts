@@ -1,9 +1,9 @@
 import { ResponseByStatus } from "./types/response-body";
 import { InitParameters } from "../types/common";
 import {
-  FetchOptions,
+  AllFetchOptions,
   OpenapiPaths,
-  OptionalFetchOptions,
+  FetchOptions,
 } from "./types/fetch-options";
 
 export const FetchFactory = {
@@ -21,11 +21,8 @@ function fetchFactory<Paths>(options?: InitParameters) {
     Path extends keyof Paths,
     Method extends keyof Paths[Path],
     Operation extends Paths[Path][Method]
-  >(
-    input: Path,
-    init: { method: Method } & OptionalFetchOptions<Operation, Method>
-  ) {
-    const options = init as FetchOptions;
+  >(input: Path, init: { method: Method } & FetchOptions<Operation>) {
+    const options = init as unknown as { method: Method } & AllFetchOptions;
 
     const path = getPath(input as string, options.parameters?.path);
     const query = getQuery(options.parameters?.query);
@@ -46,7 +43,7 @@ function fetchFactory<Paths>(options?: InitParameters) {
 
 function buildInit(
   defaultInit: RequestInit,
-  options: FetchOptions
+  options: AllFetchOptions
 ): RequestInit {
   return {
     ...Object.assign({}, { ...defaultInit }, { ...options }),

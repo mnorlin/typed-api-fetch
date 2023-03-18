@@ -22,9 +22,9 @@
     "openapi",
     "openapi 3"
   ],
-  "main": "dist/index.js",
+  "main": "dist/src/index.js",
   "files": [
-    "dist"
+    "dist/src"
   ],
   "private": false,
   "scripts": {

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/mnorlin/typed-api-fetch/compare/v0.2.0...v0.2.1) (2023-03-18)
+
+
+### Bug Fixes
+
+* correctly build npm package ([3ad98ce](https://github.com/mnorlin/typed-api-fetch/commit/3ad98ce7f3e855b8fd0f56184bb48e9c5d718cb1))
+
 ## [0.2.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.1.0...v0.2.0) (2023-03-18)
 
 

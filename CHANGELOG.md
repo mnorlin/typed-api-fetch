@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.2.1...v0.3.0) (2023-03-19)
+
+
+### Features
+
+* fetch function now returns the browser native Response object ([9a98c4b](https://github.com/mnorlin/typed-api-fetch/commit/9a98c4b59d211ff439804a08331957c8b1d5e6b8))
+
 ## [0.2.1](https://github.com/mnorlin/typed-api-fetch/compare/v0.2.0...v0.2.1) (2023-03-18)
 
 

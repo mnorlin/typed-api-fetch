@@ -2,9 +2,16 @@ import { FetchFactory } from "../../src/openapi-typescript";
 import { paths, components } from "./test-data/petstore-openapi3";
 import { IsEqual } from "../test-tools";
 import { Immutable } from "../../src/types/utilities";
+import { Readable } from "stream";
 
 const mockedJson = jest.fn(() => ({} as any));
-const mockedFetch = jest.fn(() => ({ ok: true, json: mockedJson } as any));
+const mockedFetch = jest.fn(
+  () =>
+    ({
+      ok: true,
+      body: Readable.from([`{"hello": "world"}`]),
+    } as any)
+);
 global.fetch = jest.fn(() => ({ ok: true, json: mockedJson } as any));
 
 const defaultFetch = FetchFactory.build<paths>();
@@ -268,9 +275,9 @@ describe("Generated fetch request", () => {
 describe("Generated fetch response", () => {
   it("calls json() of response", async () => {
     const response = await customFetch("/store/inventory", { method: "get" });
-    response.json();
+    const payload = await response.json();
 
-    expect(mockedJson.mock.calls).toHaveLength(1);
+    expect(payload.hello).toBe("world");
   });
 
   it("can be discriminated based on ok property", async () => {

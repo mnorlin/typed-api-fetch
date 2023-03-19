@@ -30,12 +30,11 @@ function fetchFactory<Paths>(options?: InitParameters) {
 
     const fetchInit = buildInit(defaultInit, options);
     const response = await fetchMethod(url, fetchInit);
-
-    return {
-      ...response,
-      ok: response.ok,
+    return new Response(response.body, {
       status: response.status,
-    } as Omit<Response, "json"> & ResponseByStatus<Paths[Path][Method]>;
+      headers: response.headers,
+      statusText: response.statusText,
+    }) as Omit<Response, "json"> & ResponseByStatus<Paths[Path][Method]>;
   }
 
   return fetcher;

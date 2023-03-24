@@ -32,10 +32,7 @@ type OperationParameters<
   parameters?: infer AllParameters;
 }
   ? AllParameters extends {
-      [key in ParameterType]?: infer PathParameters extends Record<
-        string,
-        string | number
-      >;
+      [key in ParameterType]?: infer PathParameters;
     }
     ? PathParameters
     : never

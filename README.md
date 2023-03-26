@@ -108,7 +108,7 @@ The `Operation` and `Paths` are the generated types from `openapi-typescript`.
 | `FetchParameters<Operation>`          | The `parameters` property withing `options`, containing the `path` and `query` property |
 | `ResponseBody<Operation, StatusCode>` | The response body given a specific HTTP `StatusCode`                                    |
 | `ResponseBodyError<Operation>`        | The response body for error responses (HTTP status code 300-599)                        |
-| `ResponseBodySucess<Operation>`       | The response body for error responses (HTTP status code 200-299)                        |
+| `ResponseBodySuccess<Operation>`      | The response body for error responses (HTTP status code 200-299)                        |
 | `SubPaths<Paths, Method>`             | The paths given a specified HTTP `Method`.                                              |
 
 ### Example implmentations
@@ -119,7 +119,7 @@ Using the utility types, you can write a custom implementation using the generat
 import { useEffect, useState } from "react";
 import { FetchFactory } from "typed-api-fetch";
 import type {
-  ResponseBodySucess,
+  ResponseBodySuccess,
   FetchParameters,
   SubPaths,
 } from "typed-api-fetch";
@@ -131,7 +131,7 @@ export function useGet<
   GetPath extends SubPaths<paths, "get">,
   Operation extends paths[GetPath]["get"]
 >(path: GetPath, parameters?: FetchParameters<Operation>) {
-  const [data, setData] = useState<ResponseBodySucess<Operation>>();
+  const [data, setData] = useState<ResponseBodySuccess<Operation>>();
 
   useEffect(() => {
     fetchDataFromApi();
@@ -141,7 +141,7 @@ export function useGet<
     const response = await fetch(path, { method: "get", parameters } as any);
     if (response.ok) {
       const payload = await response.json();
-      setData(payload as ResponseBodySucess<Operation>);
+      setData(payload as ResponseBodySuccess<Operation>);
     }
   }
 

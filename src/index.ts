@@ -4,6 +4,6 @@ export {
   FetchParameters,
   SubPaths,
   ResponseBody,
-  ResponseBodySucess,
+  ResponseBodySuccess,
   ResponseBodyError,
 } from "./openapi-typescript";

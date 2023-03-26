@@ -58,7 +58,7 @@ export type ResponseBody<
  * Returns the response body for successful requests.
  * It ensures that only successful responses (status code of 2XX) are considered.
  */
-export type ResponseBodySucess<Operation> = ResponseBody<
+export type ResponseBodySuccess<Operation> = ResponseBody<
   Operation,
   IntRange<200, 299>
 >;

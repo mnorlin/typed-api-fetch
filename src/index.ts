@@ -6,4 +6,6 @@ export {
   ResponseBody,
   ResponseBodySuccess,
   ResponseBodyError,
+  OperationRequestBody,
+  OperationResponseTypes,
 } from "./openapi-typescript";

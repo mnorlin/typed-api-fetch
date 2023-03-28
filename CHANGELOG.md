@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.3.1](https://github.com/mnorlin/typed-api-fetch/compare/v0.3.0...v0.3.1) (2023-03-28)
+
+
+### Bug Fixes
+
+* expose more utility types ([0c88eee](https://github.com/mnorlin/typed-api-fetch/commit/0c88eeeb212a892356f7b273bf442a7decb0e73a))
+* infer query parameters more reliable ([eaaaa2c](https://github.com/mnorlin/typed-api-fetch/commit/eaaaa2c1e43a196fea0c0ffead9500c4a2bd056c))
+* Prevent error on HTTP 204 responses ([361c03b](https://github.com/mnorlin/typed-api-fetch/commit/361c03b3122eb2962d9ab5ff3ca853ad7f891df8))
+* typo in ResponseBodySuccess ([8ebf770](https://github.com/mnorlin/typed-api-fetch/commit/8ebf77049808b38978503b902482e88c6cf6e05b))
+
 ## [0.3.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.2.1...v0.3.0) (2023-03-19)
 
 

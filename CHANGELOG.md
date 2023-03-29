@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/mnorlin/typed-api-fetch/compare/v0.3.1...v0.3.2) (2023-03-29)
+
+
+### Miscellaneous Chores
+
+* re-release to npmjs ([3b2c99b](https://github.com/mnorlin/typed-api-fetch/commit/3b2c99b99f884b0c7b55a507debf4b17b89b16ba))
+
 ## [0.3.1](https://github.com/mnorlin/typed-api-fetch/compare/v0.3.0...v0.3.1) (2023-03-28)
 
 

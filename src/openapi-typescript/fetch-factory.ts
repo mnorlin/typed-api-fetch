@@ -65,10 +65,21 @@ function getPath(path: string, pathParams?: Record<string, string | number>) {
   });
 }
 
-function getQuery(params?: Record<string, string | number>): string {
+function getQuery(
+  params?: Record<string, string | number | string[] | number[]>
+): string {
   if (!params) {
     return "";
   }
-  const searchParams = new URLSearchParams(params as Record<string, string>);
-  return "?" + searchParams.toString();
+
+  const searchParams = Object.entries(params).map(([key, value]) => {
+    if (Array.isArray(value)) {
+      return value
+        .map((v) => `${encodeURIComponent(key)}=${encodeURIComponent(`${v}`)}`)
+        .join("&");
+    }
+    return `${encodeURIComponent(key)}=${encodeURIComponent(`${params[key]}`)}`;
+  });
+
+  return "?" + searchParams.join("&");
 }

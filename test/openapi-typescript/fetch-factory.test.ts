@@ -197,6 +197,18 @@ describe("Generated fetch request", () => {
     );
   });
 
+  it("resolves array query parameter", () => {
+    customFetch("/pet/findByStatus", {
+      method: "get",
+      // @ts-ignore
+      parameters: { query: { status: ["available", "free"] } },
+    });
+
+    expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
+      "https://petstore3.swagger.io/pet/findByStatus?status=available&status=free"
+    );
+  });
+
   it("merges headers with default headers", () => {
     customFetch("/store/inventory", {
       method: "get",

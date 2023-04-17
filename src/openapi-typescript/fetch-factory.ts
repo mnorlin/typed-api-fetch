@@ -31,7 +31,9 @@ function fetchFactory<Paths>(options?: InitParameters) {
     const fetchInit = buildInit(defaultInit, options);
     const response = await fetchMethod(url, fetchInit);
     return new Response(
-      [101, 204, 205, 304].includes(response.status) ? null : response.body,
+      [101, 204, 205, 302, 304].includes(response.status)
+        ? null
+        : response.body,
       {
         status: response.status,
         headers: response.headers,

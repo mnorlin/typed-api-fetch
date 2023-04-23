@@ -197,18 +197,6 @@ describe("Generated fetch request", () => {
     );
   });
 
-  it("resolves array query parameter", () => {
-    customFetch("/pet/findByStatus", {
-      method: "get",
-      // @ts-ignore
-      parameters: { query: { status: ["available", "free"] } },
-    });
-
-    expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
-      "https://petstore3.swagger.io/pet/findByStatus?status=available&status=free"
-    );
-  });
-
   it("merges headers with default headers", () => {
     customFetch("/store/inventory", {
       method: "get",
@@ -280,6 +268,38 @@ describe("Generated fetch request", () => {
 
     expect((mockedFetch.mock.calls[0] as any)[1].body).toBe(
       JSON.stringify(body)
+    );
+  });
+});
+
+describe("Handles parameter serialization", () => {
+  const queryFetch = FetchFactory.build<paths>({ fetchMethod: mockedFetch });
+  const explodeQueryFetch = FetchFactory.build<paths>({
+    parameterSerialization: { explode: true },
+    fetchMethod: mockedFetch,
+  });
+
+  it("resolves query array as comma separated when default", () => {
+    queryFetch("/pet/findByStatus", {
+      method: "get",
+      // @ts-ignore
+      parameters: { query: { status: ["available", "free"] } },
+    });
+
+    expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
+      "/pet/findByStatus?status=available,free"
+    );
+  });
+
+  it("resolves query array as comma separated when set to explode", () => {
+    explodeQueryFetch("/pet/findByStatus", {
+      method: "get",
+      // @ts-ignore
+      parameters: { query: { status: ["available", "free"] } },
+    });
+
+    expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
+      "/pet/findByStatus?status=available&status=free"
     );
   });
 });

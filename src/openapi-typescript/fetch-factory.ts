@@ -16,6 +16,7 @@ function fetchFactory<Paths>(options?: InitParameters) {
   const basePath = options?.baseUrl ?? "";
   const defaultInit = options?.defaultInit ?? {};
   const fetchMethod = options?.fetchMethod ?? fetch;
+  const serialization = options?.parameterSerialization;
 
   async function fetcher<
     Path extends keyof Paths,
@@ -25,7 +26,10 @@ function fetchFactory<Paths>(options?: InitParameters) {
     const options = init as unknown as { method: Method } & AllFetchOptions;
 
     const path = getPath(input as string, options.parameters?.path);
-    const query = getQuery(options.parameters?.query);
+    const query = getQuery(
+      options.parameters?.query ?? null,
+      serialization?.explode
+    );
     const url = basePath + path + query;
 
     const fetchInit = buildInit(defaultInit, options);
@@ -66,7 +70,8 @@ function getPath(path: string, pathParams?: Record<string, string | number>) {
 }
 
 function getQuery(
-  params?: Record<string, string | number | string[] | number[]>
+  params: Record<string, string | number | string[] | number[]> | null,
+  explode?: boolean
 ): string {
   if (!params) {
     return "";
@@ -74,9 +79,17 @@ function getQuery(
 
   const searchParams = Object.entries(params).map(([key, value]) => {
     if (Array.isArray(value)) {
-      return value
-        .map((v) => `${encodeURIComponent(key)}=${encodeURIComponent(`${v}`)}`)
-        .join("&");
+      if (explode) {
+        return value
+          .map(
+            (v) => `${encodeURIComponent(key)}=${encodeURIComponent(`${v}`)}`
+          )
+          .join("&");
+      } else {
+        return `${encodeURIComponent(key)}=${value
+          .map((v) => encodeURIComponent(`${v}`))
+          .join(",")}`;
+      }
     }
     return `${encodeURIComponent(key)}=${encodeURIComponent(`${params[key]}`)}`;
   });

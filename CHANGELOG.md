@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.3.2...v0.4.0) (2023-04-23)
+
+
+### Features
+
+* add parameter serialization option to factory method ([39e8def](https://github.com/mnorlin/typed-api-fetch/commit/39e8defe997566d2275afd0cc9da9466c5629f22))
+* resolve array in query parameters ([b8defbf](https://github.com/mnorlin/typed-api-fetch/commit/b8defbffe4b3fd669345a8f4045d31f60956e6cb))
+
+
+### Bug Fixes
+
+* support patch requests ([1c24c56](https://github.com/mnorlin/typed-api-fetch/commit/1c24c56ab1576810f49551c4aa5a6037283a5fd4))
+
 ## [0.3.2](https://github.com/mnorlin/typed-api-fetch/compare/v0.3.1...v0.3.2) (2023-03-29)
 
 

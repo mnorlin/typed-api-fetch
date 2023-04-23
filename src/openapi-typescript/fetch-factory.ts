@@ -52,7 +52,7 @@ function buildInit(
   return {
     ...Object.assign({}, { ...defaultInit }, { ...options }),
     body: options.body ? JSON.stringify(options.body) : undefined,
-    method: options.method as string,
+    method: (options.method ?? "GET").toUpperCase(),
     headers: Object.assign({}, defaultInit.headers, options.headers),
   };
 }

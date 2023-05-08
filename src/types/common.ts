@@ -2,8 +2,21 @@ export type InitParameters = {
   baseUrl?: string;
   defaultInit?: Omit<RequestInit, "method">;
   fetchMethod?: typeof fetch;
-  parameterSerialization?: { explode?: boolean };
+  parameterSerialization?: {
+    path?: { explode?: boolean; style?: PathSerializationStyle };
+    query?: { explode?: boolean; style?: QuerySerializationStyle };
+  };
 };
+
+export type QuerySerializationStyle =
+  | "form"
+  | "spaceDelimited"
+  | "pipeDelimited";
+// | "deepObject"
+
+export type PathSerializationStyle = "simple";
+//| "label"
+//| "matrix"
 
 export type HttpMethod =
   | "get"

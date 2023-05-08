@@ -5,6 +5,8 @@ import {
   OpenapiPaths,
   FetchOptions,
 } from "./types/fetch-options";
+import { queryBuilder } from "./query-builder";
+import { pathBuilder } from "./path-builder";
 
 export const FetchFactory = {
   build: <Paths extends OpenapiPaths<Paths>>(options?: InitParameters) => {
@@ -25,11 +27,21 @@ function fetchFactory<Paths>(options?: InitParameters) {
   >(input: Path, init: { method: Method } & FetchOptions<Operation>) {
     const options = init as unknown as { method: Method } & AllFetchOptions;
 
-    const path = getPath(input as string, options.parameters?.path);
-    const query = getQuery(
-      options.parameters?.query ?? null,
-      serialization?.explode
+    const qBuilder = queryBuilder({
+      style: serialization?.query?.style ?? "form",
+      explode: serialization?.query?.explode ?? false,
+    });
+
+    const pBuilder = pathBuilder({
+      style: serialization?.path?.style ?? "simple",
+      explode: serialization?.path?.explode ?? false,
+    });
+
+    const path = pBuilder.getPath(
+      input as string,
+      options.parameters?.path ?? null
     );
+    const query = qBuilder.getQuery(options.parameters?.query ?? null);
     const url = basePath + path + query;
 
     const fetchInit = buildInit(defaultInit, options);
@@ -54,45 +66,7 @@ function buildInit(
   return {
     ...Object.assign({}, { ...defaultInit }, { ...options }),
     body: options.body ? JSON.stringify(options.body) : undefined,
-    method: (options.method ?? "GET").toUpperCase(),
+    method: options.method?.toUpperCase(),
     headers: Object.assign({}, defaultInit.headers, options.headers),
   };
-}
-
-function getPath(path: string, pathParams?: Record<string, string | number>) {
-  if (!pathParams) {
-    return path;
-  }
-  return path.replace(/\{([^}]+)\}/g, (_, key) => {
-    const value = encodeURIComponent(pathParams[key] as string);
-    return value;
-  });
-}
-
-function getQuery(
-  params: Record<string, string | number | string[] | number[]> | null,
-  explode?: boolean
-): string {
-  if (!params) {
-    return "";
-  }
-
-  const searchParams = Object.entries(params).map(([key, value]) => {
-    if (Array.isArray(value)) {
-      if (explode) {
-        return value
-          .map(
-            (v) => `${encodeURIComponent(key)}=${encodeURIComponent(`${v}`)}`
-          )
-          .join("&");
-      } else {
-        return `${encodeURIComponent(key)}=${value
-          .map((v) => encodeURIComponent(`${v}`))
-          .join(",")}`;
-      }
-    }
-    return `${encodeURIComponent(key)}=${encodeURIComponent(`${params[key]}`)}`;
-  });
-
-  return "?" + searchParams.join("&");
 }

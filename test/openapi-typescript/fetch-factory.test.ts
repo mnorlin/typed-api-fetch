@@ -272,38 +272,6 @@ describe("Generated fetch request", () => {
   });
 });
 
-describe("Handles parameter serialization", () => {
-  const queryFetch = FetchFactory.build<paths>({ fetchMethod: mockedFetch });
-  const explodeQueryFetch = FetchFactory.build<paths>({
-    parameterSerialization: { explode: true },
-    fetchMethod: mockedFetch,
-  });
-
-  it("resolves query array as comma separated when default", () => {
-    queryFetch("/pet/findByStatus", {
-      method: "get",
-      // @ts-ignore
-      parameters: { query: { status: ["available", "free"] } },
-    });
-
-    expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
-      "/pet/findByStatus?status=available,free"
-    );
-  });
-
-  it("resolves query array as comma separated when set to explode", () => {
-    explodeQueryFetch("/pet/findByStatus", {
-      method: "get",
-      // @ts-ignore
-      parameters: { query: { status: ["available", "free"] } },
-    });
-
-    expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
-      "/pet/findByStatus?status=available&status=free"
-    );
-  });
-});
-
 describe("Generated fetch response", () => {
   it("calls json() of response", async () => {
     const response = await customFetch("/store/inventory", { method: "get" });

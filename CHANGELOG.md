@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.5.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.4.0...v0.5.0) (2023-05-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* add path parameter serialization option
+
+### Features
+
+* add path parameter serialization option ([be536cb](https://github.com/mnorlin/typed-api-fetch/commit/be536cbce2f2bca79e75bbfa46e9a98ba230d7d4))
+
 ## [0.4.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.3.2...v0.4.0) (2023-04-23)
 
 

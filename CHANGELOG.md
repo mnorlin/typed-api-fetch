@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.6.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.5.0...v0.6.0) (2023-07-20)
+
+
+### ⚠ BREAKING CHANGES
+
+* make createFetch a default export
+* rename and update fetch factory function
+
+### Features
+
+* default headers can be a function ([af8b6bc](https://github.com/mnorlin/typed-api-fetch/commit/af8b6bc00bd7b712117af30e3183af18b7ddd3c2))
+* make createFetch a default export ([e7023fd](https://github.com/mnorlin/typed-api-fetch/commit/e7023fd94471f57caa26fdfcb55af0987108e446))
+* rename and update fetch factory function ([412e9cf](https://github.com/mnorlin/typed-api-fetch/commit/412e9cfe5a034f96a4c963af669818f1165a6159))
+* revert - make response object immutable ([92a1489](https://github.com/mnorlin/typed-api-fetch/commit/92a1489befc0bfc46f1394608a8a17ef86a65160))
+
 ## [0.5.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.4.0...v0.5.0) (2023-05-08)
 
 

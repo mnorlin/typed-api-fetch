@@ -28,7 +28,7 @@ With a type definition stored in `./petstore.ts`, it is now possible to build a 
 
 ```ts
 import { paths } from "./petstore";
-import { createFetch } from "typed-api-fetch";
+import createFetch from "typed-api-fetch";
 
 const fetch = createFetch<paths>({
   baseUrl: "https://petstore3.swagger.io",
@@ -118,7 +118,7 @@ The `Operation` and `Paths` are the generated types from `openapi-typescript`.
 Using the utility types, you can write a custom implementation using the generated `fetch` function. Below is a function that makes `GET` requests, and returns an object with `{ data, error }` depending on the response status code.
 
 ```tsx
-import { createFetch } from "typed-api-fetch";
+import createFetch from "typed-api-fetch";
 import type {
   ResponseBodySuccess,
   FetchOptions,

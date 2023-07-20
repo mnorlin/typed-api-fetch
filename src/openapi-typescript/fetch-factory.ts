@@ -9,7 +9,7 @@ import { queryBuilder } from "./query-builder";
 import { pathBuilder } from "./path-builder";
 import { buildHeaders } from "./header-builder";
 
-export function createFetch<Paths extends OpenapiPaths<Paths>>(
+export default function createFetch<Paths extends OpenapiPaths<Paths>>(
   options?: InitParameters
 ) {
   return fetchFactory<Paths>(options);

@@ -1,5 +1,5 @@
 export {
-  createFetch,
+  default,
   FetchOptions,
   FetchParameters,
   SubPaths,

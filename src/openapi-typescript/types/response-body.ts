@@ -1,4 +1,4 @@
-import { Immutable, IntRange } from "../../types/utilities";
+import { IntRange } from "../../types/utilities";
 
 /**
  * Takes an <i>Operation</i> and creates a type that contains
@@ -7,13 +7,9 @@ import { Immutable, IntRange } from "../../types/utilities";
  */
 export type ResponseByStatus<Operation> = {
   [K in keyof OperationResponseTypes<Operation>]: {
-    readonly status: K;
-    readonly ok: K extends IntRange<200, 299> ? true : false;
-    readonly json: () => Promise<
-      OperationResponseTypes<Operation>[K] extends object
-        ? Immutable<OperationResponseTypes<Operation>[K]>
-        : never
-    >;
+    status: K;
+    ok: K extends IntRange<200, 299> ? true : false;
+    json(): Promise<OperationResponseTypes<Operation>[K]>;
   };
 }[keyof OperationResponseTypes<Operation>];
 

@@ -42,14 +42,12 @@ const fetch = createFetch<paths>({
 
 The builder accepts the following options
 
-| Name                     | Type       | Default | Description                                                                                                                                                                      |
-| :----------------------- | :--------- | :------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `baseUrl`                | `string`   |         | Prefixed to the `path` of the fetch method (eg. `https://petstore3.swagger.io`)                                                                                                  |
-| `defaultInit`            | `object`   |         | Default options in the generated fetch method                                                                                                                                    |
-| `fetchMethod`            | `Function` | `fetch` | A fetch method used to call the API, must comply to the global Fetch method definition                                                                                           |
-| `parameterSerialization` | `object`   |         | an object with the boolean property [`explode`](https://swagger.io/docs/specification/serialization/#query), if enabled, array query parameters generate separate URI parameters |
-
-    parameterSerialization: { explode: true },
+| Name                     | Type       | Default                                                                                  | Description                                                                                                                                 |
+| :----------------------- | :--------- | :--------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------ |
+| `baseUrl`                | `string`   |                                                                                          | Prefixed to the `path` of the fetch method (eg. `https://petstore3.swagger.io`)                                                             |
+| `defaultInit`            | `object`   |                                                                                          | Default options in the generated fetch method                                                                                               |
+| `fetchMethod`            | `Function` | `fetch`                                                                                  | A fetch method used to call the API, must comply to the global Fetch method definition                                                      |
+| `parameterSerialization` | `object`   | `{ path: { explode: false, style: "simple" }, query: { explode: false, style: "form"} }` | an object describing how `path` and `query` parameters should be [`serialized`](https://swagger.io/docs/specification/serialization/#query) |
 
 ### Call the generated `fetch` function
 

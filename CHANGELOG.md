@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.1](https://github.com/mnorlin/typed-api-fetch/compare/v0.6.0...v0.6.1) (2023-07-20)
+
+
+### Bug Fixes
+
+* make defaultInit take function as header property ([a12d3ee](https://github.com/mnorlin/typed-api-fetch/commit/a12d3ee915e281695dc17fbcef873474980f1f0a))
+
 ## [0.6.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.5.0...v0.6.0) (2023-07-20)
 
 

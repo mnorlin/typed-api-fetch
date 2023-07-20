@@ -76,7 +76,7 @@ The `fetch` function takes two arguments, `path` and `options`. `options` has th
 
 Given the path `/pet/{petId}`, and the parameter object
 
-```ts
+```js
 {
   path: { petId: 42 },
   query: { page: 3 },
@@ -117,67 +117,42 @@ The `Operation` and `Paths` are the generated types from `openapi-typescript`.
 
 ### Example implmentations
 
-Using the utility types, you can write a custom implementation using the generated `fetch` function. Below is an example of a React hook, that takes takes two arguments, `paths` and `parameters`, and returns the response of a successfull request. The available `paths` are only valid HTTP `GET` requests to the API.
+Using the utility types, you can write a custom implementation using the generated `fetch` function. Below is a function that makes `GET` requests, and returns an object with `{ data, error }` depending on the response status code.
 
 ```tsx
-import { useEffect, useState } from "react";
 import { FetchFactory } from "typed-api-fetch";
 import type {
   ResponseBodySuccess,
-  FetchParameters,
+  FetchOptions,
   SubPaths,
 } from "typed-api-fetch";
 import { paths } from "./petstore-openapi3";
 
 const fetch = FetchFactory.build<paths>();
 
-export function useGet<
+export async function fetchGet<
   GetPath extends SubPaths<paths, "get">,
   Operation extends paths[GetPath]["get"]
->(path: GetPath, parameters?: FetchParameters<Operation>) {
-  const [data, setData] = useState<ResponseBodySuccess<Operation>>();
+>(
+  path: GetPath,
+  options: FetchOptions<Operation>
+): Promise<{
+  data?: ResponseBodySuccess<Operation>;
+  error?: ResponseBodyError<Operation>;
+}> {
+  const response = await fetch(path, { ...options, method: "get" });
 
-  useEffect(() => {
-    fetchDataFromApi();
-  }, [JSON.stringify(parameters)]);
-
-  async function fetchDataFromApi() {
-    const response = await fetch(path, { method: "get", parameters } as any);
-    if (response.ok) {
-      const payload = await response.json();
-      setData(payload as ResponseBodySuccess<Operation>);
-    }
+  if (response.ok) {
+    return {
+      data: (await response.json()) as ResponseBodySuccess<Operation>,
+      error: undefined,
+    };
+  } else {
+    return {
+      data: undefined,
+      error: (await response.json()) as ResponseBodyError<Operation>,
+    };
   }
-
-  return data;
-}
-```
-
-This enables the use of typed API data in a React component
-
-```tsx
-import { ChangeEvent, useState } from "react";
-import { useGet } from "./useGet";
-
-function MyComponent() {
-  const [petId, setPetId] = useState(0);
-
-  const data = useGet("/pet/{petId}", { path: { petId } });
-
-  function handleChange(e: ChangeEvent<HTMLInputElement>) {
-    setPetId(parseInt(e.target.value));
-  }
-
-  if (!data) {
-    return "Nothing to show";
-  }
-
-  return (
-    <>
-      <h1>{data.name}</h1>
-      <input type="number" onChange={handleChange} value={petId} />
-    </>
-  );
 }
 ```
 

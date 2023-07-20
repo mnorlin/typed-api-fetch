@@ -50,14 +50,8 @@ function fetchFactory<Paths>(options?: InitParameters) {
 
     const fetchInit = buildInit(defaultInit, options, headers);
     const response = await fetchMethod(url, fetchInit);
-    return new Response(
-      [101, 204, 205, 304].includes(response.status) ? null : response.body,
-      {
-        status: response.status,
-        headers: response.headers,
-        statusText: response.statusText,
-      }
-    ) as Omit<Response, "json"> & ResponseByStatus<Paths[Path][Method]>;
+    return response as Omit<Response, "json"> &
+      ResponseByStatus<Paths[Path][Method]>;
   }
 
   return fetcher;

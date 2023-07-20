@@ -1,17 +1,18 @@
 import createFetch from "../../src/openapi-typescript";
 import { paths, components } from "./test-data/petstore-openapi3";
 import { IsEqual } from "../test-tools";
-import { Readable } from "stream";
 
-const mockedJson = jest.fn(() => ({} as any));
-const mockedFetch = jest.fn(
-  () =>
-    ({
-      ok: true,
-      body: Readable.from([`{"hello": "world"}`]),
-    } as any)
-);
-global.fetch = jest.fn(() => ({ ok: true, json: mockedJson } as any));
+const mockedFetch = jest.fn<any, any>(() => ({
+  status: 200,
+  ok: true,
+  json: () => ({ hello: "world" }),
+})) as any;
+
+global.fetch = jest.fn<any, any>(() => ({
+  status: 200,
+  ok: true,
+  json: () => ({ hello: "world" }),
+}));
 
 const defaultFetch = createFetch<paths>();
 

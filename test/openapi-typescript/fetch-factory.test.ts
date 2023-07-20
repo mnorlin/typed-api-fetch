@@ -1,4 +1,4 @@
-import { FetchFactory } from "../../src/openapi-typescript";
+import { createFetch } from "../../src/openapi-typescript";
 import { paths, components } from "./test-data/petstore-openapi3";
 import { IsEqual } from "../test-tools";
 import { Readable } from "stream";
@@ -13,10 +13,10 @@ const mockedFetch = jest.fn(
 );
 global.fetch = jest.fn(() => ({ ok: true, json: mockedJson } as any));
 
-const defaultFetch = FetchFactory.build<paths>();
+const defaultFetch = createFetch<paths>();
 
 const customHeaders = { Accept: "application/json" };
-const customFetch = FetchFactory.build<paths>({
+const customFetch = createFetch<paths>({
   baseUrl: "https://petstore3.swagger.io",
   defaultInit: {
     headers: customHeaders,
@@ -25,7 +25,7 @@ const customFetch = FetchFactory.build<paths>({
   fetchMethod: mockedFetch,
 });
 
-describe("generated fetch from FetchFactory with no options", () => {
+describe("generated fetch from 'createFetch' with no options", () => {
   it("calls global.fetch function", () => {
     defaultFetch("/store/inventory", { method: "get" });
 
@@ -65,7 +65,7 @@ describe("generated fetch from FetchFactory with no options", () => {
   });
 });
 
-describe("generated fetch from FetchFactory with custom options", () => {
+describe("generated fetch from 'createFetch' with custom options", () => {
   it("calls supplied fetch function", () => {
     customFetch("/store/inventory", { method: "get" });
 

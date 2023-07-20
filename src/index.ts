@@ -1,5 +1,5 @@
 export {
-  FetchFactory,
+  createFetch,
   FetchOptions,
   FetchParameters,
   SubPaths,

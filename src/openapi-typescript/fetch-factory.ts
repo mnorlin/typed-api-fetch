@@ -9,11 +9,11 @@ import { queryBuilder } from "./query-builder";
 import { pathBuilder } from "./path-builder";
 import { buildHeaders } from "./header-builder";
 
-export const FetchFactory = {
-  build: <Paths extends OpenapiPaths<Paths>>(options?: InitParameters) => {
-    return fetchFactory<Paths>(options);
-  },
-};
+export function createFetch<Paths extends OpenapiPaths<Paths>>(
+  options?: InitParameters
+) {
+  return fetchFactory<Paths>(options);
+}
 
 function fetchFactory<Paths>(options?: InitParameters) {
   const basePath = options?.baseUrl ?? "";

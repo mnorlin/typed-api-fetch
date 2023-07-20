@@ -29,7 +29,7 @@
   "private": false,
   "scripts": {
     "build": "tsc",
-    "test": "jest --silent",
+    "test": "jest",
     "test:ci": "jest --silent --ci --collectCoverage --reporters=default --reporters=jest-junit",
     "lint": "eslint --ext .js,.ts src test --max-warnings=0",
     "format": "prettier --write .",

@@ -68,10 +68,11 @@ const response = await fetch(
 
 The `fetch` function takes two arguments, `path` and `options`. `options` has the same properties as the [global `fetch` function](https://developer.mozilla.org/en-US/docs/Web/API/fetch#options), but with a few differences.
 
-| Name         | Type     | Default | Description                                                                                    |
-| :----------- | :------- | :------ | :--------------------------------------------------------------------------------------------- |
-| `body`       | `object` |         | A JSON object that satisfies the API definition                                                |
-| `parameters` | `object` |         | A record with a `path` and `query` property. See the example below this table of how to use it |
+| Name         | Type                        | Default | Description                                                                                                                        |
+| :----------- | :-------------------------- | :------ | :--------------------------------------------------------------------------------------------------------------------------------- |
+| `body`       | `object`                    |         | A JSON object that satisfies the API definition                                                                                    |
+| `parameters` | `object`                    |         | A record with a `path` and `query` property. See the example below this table of how to use it                                     |
+| `headers`    | `HeadersInit` or `function` |         | Either a valid Header constructor arguement, or a function that takes an object with `resolvedPath` and returns a valid HeaderInit |
 
 Given the path `/pet/{petId}`, and the parameter object
 

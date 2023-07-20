@@ -7,6 +7,7 @@ import {
 } from "./types/fetch-options";
 import { queryBuilder } from "./query-builder";
 import { pathBuilder } from "./path-builder";
+import { buildHeaders } from "./header-builder";
 
 export const FetchFactory = {
   build: <Paths extends OpenapiPaths<Paths>>(options?: InitParameters) => {
@@ -16,7 +17,8 @@ export const FetchFactory = {
 
 function fetchFactory<Paths>(options?: InitParameters) {
   const basePath = options?.baseUrl ?? "";
-  const defaultInit = options?.defaultInit ?? {};
+  const defaultInit =
+    options?.defaultInit ?? ({} as NonNullable<InitParameters["defaultInit"]>);
   const fetchMethod = options?.fetchMethod ?? fetch;
   const serialization = options?.parameterSerialization;
 
@@ -44,7 +46,9 @@ function fetchFactory<Paths>(options?: InitParameters) {
     const query = qBuilder.getQuery(options.parameters?.query ?? null);
     const url = basePath + path + query;
 
-    const fetchInit = buildInit(defaultInit, options);
+    const headers = buildHeaders(url, defaultInit.headers, options.headers);
+
+    const fetchInit = buildInit(defaultInit, options, headers);
     const response = await fetchMethod(url, fetchInit);
     return new Response(
       [101, 204, 205, 304].includes(response.status) ? null : response.body,
@@ -61,12 +65,13 @@ function fetchFactory<Paths>(options?: InitParameters) {
 
 function buildInit(
   defaultInit: RequestInit,
-  options: AllFetchOptions
+  options: AllFetchOptions,
+  headers: HeadersInit
 ): RequestInit {
   return {
     ...Object.assign({}, { ...defaultInit }, { ...options }),
     body: options.body ? JSON.stringify(options.body) : undefined,
     method: options.method?.toUpperCase(),
-    headers: Object.assign({}, defaultInit.headers, options.headers),
+    headers,
   };
 }

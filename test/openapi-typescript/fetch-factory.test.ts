@@ -16,12 +16,11 @@ global.fetch = jest.fn(() => ({ ok: true, json: mockedJson } as any));
 
 const defaultFetch = FetchFactory.build<paths>();
 
+const customHeaders = { Accept: "application/json" };
 const customFetch = FetchFactory.build<paths>({
   baseUrl: "https://petstore3.swagger.io",
   defaultInit: {
-    headers: {
-      Accept: "application/json",
-    },
+    headers: customHeaders,
     integrity: "hashy",
   },
   fetchMethod: mockedFetch,
@@ -228,6 +227,23 @@ describe("Generated fetch request", () => {
 
     expect(headers[0][0]).toBe("Accept");
     expect(headers[0][1]).toBe("nothing");
+  });
+
+  it("references headers object when serializing", () => {
+    customHeaders["Accept"] = "nothing";
+
+    customFetch("/store/inventory", { method: "get" });
+
+    const headers = Object.entries(
+      (mockedFetch.mock.calls[0] as any)[1].headers
+    );
+
+    expect(headers).toHaveLength(1);
+
+    expect(headers[0][0]).toBe("Accept");
+    expect(headers[0][1]).toBe("nothing");
+
+    customHeaders["Accept"] = "application/json"; // Reset to initial state
   });
 
   it("uses defaultInit integrity", () => {

@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.2](https://github.com/mnorlin/typed-api-fetch/compare/v0.6.1...v0.6.2) (2023-07-20)
+
+
+### Bug Fixes
+
+* pass original fetch response to consumer ([da78b7b](https://github.com/mnorlin/typed-api-fetch/commit/da78b7b0d4618cb6dbedba78fbaf3ccf0a5d2077))
+
 ## [0.6.1](https://github.com/mnorlin/typed-api-fetch/compare/v0.6.0...v0.6.1) (2023-07-20)
 
 

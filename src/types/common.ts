@@ -1,6 +1,10 @@
 export type InitParameters = {
   baseUrl?: string;
-  defaultInit?: Omit<RequestInit, "method">;
+  defaultInit?: Omit<RequestInit, "method" | "headers"> & {
+    headers:
+      | HeadersInit
+      | ((pathInfo: { resolvedPath: string }) => HeadersInit);
+  };
   fetchMethod?: typeof fetch;
   parameterSerialization?: {
     path?: { explode?: boolean; style?: PathSerializationStyle };

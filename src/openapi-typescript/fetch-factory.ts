@@ -64,7 +64,7 @@ function fetchFactory<Paths>(options?: InitParameters) {
 }
 
 function buildInit(
-  defaultInit: RequestInit,
+  defaultInit: Omit<RequestInit, "headers">,
   options: AllFetchOptions,
   headers: HeadersInit
 ): RequestInit {

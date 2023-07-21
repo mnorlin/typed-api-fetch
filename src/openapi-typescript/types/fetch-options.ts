@@ -23,7 +23,7 @@ export type FetchOptions<Operation> = Omit<
  */
 export type AllFetchOptions<Operation = never> = Omit<RequestInit, "body"> & {
   parameters: FetchParameters<Operation>;
-  body: OperationRequestBody<Operation>;
+  body: OperationRequestBody<Operation> | string;
 };
 
 /**

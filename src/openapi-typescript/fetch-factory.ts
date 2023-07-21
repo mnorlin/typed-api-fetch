@@ -64,7 +64,10 @@ function buildInit(
 ): RequestInit {
   return {
     ...Object.assign({}, { ...defaultInit }, { ...options }),
-    body: options.body ? JSON.stringify(options.body) : undefined,
+    body:
+      options.body && typeof options.body == "object"
+        ? JSON.stringify(options.body)
+        : options.body,
     method: options.method?.toUpperCase(),
     headers,
   };

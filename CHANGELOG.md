@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.7.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.6.2...v0.7.0) (2023-07-21)
+
+
+### Features
+
+* allow plain text as request body ([6b17fbb](https://github.com/mnorlin/typed-api-fetch/commit/6b17fbb37cfaa5a7dbbcd02e230e92b0652192e4))
+
 ## [0.6.2](https://github.com/mnorlin/typed-api-fetch/compare/v0.6.1...v0.6.2) (2023-07-20)
 
 

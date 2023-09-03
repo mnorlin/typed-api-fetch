@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.8.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.7.0...v0.8.0) (2023-09-03)
+
+
+### Features
+
+* preserve form data objects in request body ([8e4f287](https://github.com/mnorlin/typed-api-fetch/commit/8e4f287967f9b656a6322656faff2a1499f8c6fb))
+
 ## [0.7.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.6.2...v0.7.0) (2023-07-21)
 
 

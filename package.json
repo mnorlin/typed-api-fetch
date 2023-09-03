@@ -1,6 +1,6 @@
 {
   "name": "typed-api-fetch",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "description": "Generate a typed fetch method from a typescript definition",
   "license": "MIT",
   "author": "mnorlin",

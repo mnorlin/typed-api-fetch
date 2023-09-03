@@ -265,7 +265,7 @@ describe("Generated fetch request", () => {
     expect((mockedFetch.mock.calls[0] as any)[1].integrity).toBe("dummy");
   });
 
-  it("stringifies request body", () => {
+  it("stringifies plain JSON request body", () => {
     const body = {
       id: 1,
       petId: 2,
@@ -285,6 +285,19 @@ describe("Generated fetch request", () => {
     expect((mockedFetch.mock.calls[0] as any)[1].body).toBe(
       JSON.stringify(body)
     );
+  });
+
+  it("preserves request body of FormData objects", () => {
+    const body = new FormData();
+
+    customFetch("/store/order", {
+      method: "post",
+      headers: { Accept: "nothing" },
+      integrity: "dummy",
+      body: body,
+    });
+
+    expect((mockedFetch.mock.calls[0] as any)[1].body).toBe(body);
   });
 });
 

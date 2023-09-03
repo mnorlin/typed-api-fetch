@@ -62,12 +62,13 @@ function buildInit(
   options: AllFetchOptions,
   headers: HeadersInit
 ): RequestInit {
+  const serializableObject =
+    options.body &&
+    typeof options.body == "object" &&
+    !((options.body as any) instanceof FormData);
   return {
     ...Object.assign({}, { ...defaultInit }, { ...options }),
-    body:
-      options.body && typeof options.body == "object"
-        ? JSON.stringify(options.body)
-        : options.body,
+    body: serializableObject ? JSON.stringify(options.body) : options.body,
     method: options.method?.toUpperCase(),
     headers,
   };

@@ -27,7 +27,7 @@ export type OperationHttpHeaders<Operation> = OperationParameters<
  */
 type OperationParameters<
   Operation,
-  ParameterType extends "path" | "query" | "header"
+  ParameterType extends "path" | "query" | "header",
 > = Operation extends {
   parameters?: infer AllParameters;
 }

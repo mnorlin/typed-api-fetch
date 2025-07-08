@@ -9,7 +9,7 @@ export function pathBuilder(options: {
     params: Record<
       string,
       string | number | string[] | number[] | Record<string, string | number>
-    > | null
+    > | null,
   ) {
     const { explode } = options;
     if (!params) {

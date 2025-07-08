@@ -8,7 +8,7 @@ export type IntRange<Start extends number, End extends number> = Exclude<
 
 type Enumerate<
   N extends number,
-  Acc extends number[] = []
+  Acc extends number[] = [],
 > = Acc["length"] extends N
   ? Acc[number]
   : Enumerate<N, [...Acc, Acc["length"]]>;

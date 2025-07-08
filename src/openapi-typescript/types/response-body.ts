@@ -20,7 +20,7 @@ export type ResponseByStatus<Operation> = {
  */
 export type OperationResponseTypes<
   Operation,
-  ContentType extends string = string
+  ContentType extends string = string,
 > = Operation extends {
   responses: infer Responses;
 }
@@ -31,8 +31,8 @@ export type OperationResponseTypes<
       >
         ? ResponseBody
         : ResponseType extends "default"
-        ? Responses[ResponseType]
-        : unknown;
+          ? Responses[ResponseType]
+          : unknown;
     }
   : never;
 
@@ -45,7 +45,7 @@ type JsonBody<ResponseBody, ContentType extends string> = {
  */
 export type ResponseBody<
   Operation,
-  StatusCode = "default"
+  StatusCode = "default",
 > = StatusCode extends keyof OperationResponseTypes<Operation>
   ? OperationResponseTypes<Operation>[StatusCode]
   : never;

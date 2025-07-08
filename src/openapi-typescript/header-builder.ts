@@ -3,7 +3,7 @@ export function buildHeaders(
   defaultHeaders?:
     | HeadersInit
     | ((pathInfo: { resolvedPath: string }) => HeadersInit),
-  headers?: HeadersInit
+  headers?: HeadersInit,
 ) {
   const resolvedDefaultHeaders =
     typeof defaultHeaders === "function"
@@ -19,7 +19,7 @@ export function buildHeaders(
 }
 
 function headerToEntries(
-  headers?: Headers | [string, string][] | Record<string, string>
+  headers?: Headers | [string, string][] | Record<string, string>,
 ): [string, string][] {
   if (!headers) {
     return [];

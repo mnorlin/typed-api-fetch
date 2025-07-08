@@ -316,10 +316,12 @@ describe("Generated fetch response", () => {
     });
 
     if (response.ok) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const payload = await response.json();
       const equals: IsEqual<typeof payload, PetType> = true;
       expect(equals).toBe(true);
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const payload = await response.json();
       const equal: IsEqual<typeof payload, PetType> = false;
       expect(equal).toBe(false);
@@ -333,12 +335,14 @@ describe("Generated fetch response", () => {
     });
 
     if (response.status === 200) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const payload = await response.json();
       const equals: IsEqual<typeof payload, PetType> = true;
       expect(equals).toBe(true);
     }
 
     if (response.status === 400) {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       const payload = await response.json();
       const never: IsEqual<typeof payload, unknown> = true;
       expect(never).toBe(true);

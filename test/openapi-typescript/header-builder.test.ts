@@ -5,7 +5,7 @@ describe("Headers resolves to Record<string, string>", () => {
     it("is HeadersInit", () => {
       const headers = buildHeaders(
         "",
-        new Headers({ accept: "application/json" })
+        new Headers({ accept: "application/json" }),
       );
 
       expect(headers).toStrictEqual({ accept: "application/json" });
@@ -37,7 +37,7 @@ describe("Headers resolves to Record<string, string>", () => {
       const headers = buildHeaders(
         "",
         undefined,
-        new Headers({ accept: "application/json" })
+        new Headers({ accept: "application/json" }),
       );
 
       expect(headers).toStrictEqual({ accept: "application/json" });
@@ -64,7 +64,7 @@ describe("Headers resolves to Record<string, string>", () => {
     const headers = buildHeaders(
       "",
       new Headers({ accept: "application/json" }),
-      { connection: "keep-alive" }
+      { connection: "keep-alive" },
     );
 
     expect(headers).toStrictEqual({

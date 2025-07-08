@@ -10,7 +10,7 @@ export function queryBuilder(options: {
     params: Record<
       string,
       string | number | string[] | number[] | Record<string, string | number>
-    > | null
+    > | null,
   ): string {
     if (!params) {
       return "";
@@ -32,7 +32,7 @@ export function queryBuilder(options: {
       }
 
       return `${encodeURIComponent(key)}=${encodeURIComponent(
-        `${params[key]}`
+        `${params[key]}`,
       )}`;
     });
 
@@ -45,7 +45,7 @@ export function queryBuilder(options: {
 function getArray(
   key: string,
   value: (string | number)[],
-  style: QuerySerializationStyle
+  style: QuerySerializationStyle,
 ) {
   const QuerySeparator = {
     form: ",",
@@ -74,7 +74,7 @@ function getObjectExploded(_: string, value: Record<string, string | number>) {
   return Object.entries(value)
     .map(
       ([subKey, subVal]) =>
-        `${encodeURIComponent(subKey)}=${encodeURIComponent(`${subVal}`)}`
+        `${encodeURIComponent(subKey)}=${encodeURIComponent(`${subVal}`)}`,
     )
     .join("&");
 }

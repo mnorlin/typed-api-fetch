@@ -16,7 +16,7 @@ const response = await fetch(
     parameters: {
       path: { petId: 42 }, // typed path parameter
     },
-  }
+  },
 );
 
 const data = await response.json();
@@ -81,7 +81,7 @@ const response = await fetch(
     parameters: {
       path: { petId: 42 }, // typed path parameter
     },
-  }
+  },
 );
 ```
 
@@ -151,10 +151,10 @@ const fetch = createFetch<paths>();
 
 export async function fetchGet<
   GetPath extends SubPaths<paths, "get">,
-  Operation extends paths[GetPath]["get"]
+  Operation extends paths[GetPath]["get"],
 >(
   path: GetPath,
-  options: FetchOptions<Operation>
+  options: FetchOptions<Operation>,
 ): Promise<{
   data?: ResponseBodySuccess<Operation>;
   error?: ResponseBodyError<Operation>;

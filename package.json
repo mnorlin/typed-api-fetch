@@ -33,7 +33,7 @@
     "test:ci": "jest --silent --ci --collectCoverage --reporters=default --reporters=jest-junit",
     "lint": "eslint --ext .js,.ts src test --max-warnings=0",
     "format": "prettier --write .",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "devDependencies": {
     "@types/jest": "30.0.0",

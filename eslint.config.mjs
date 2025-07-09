@@ -21,7 +21,7 @@ export default defineConfig([
     extends: compat.extends(
       "eslint:recommended",
       "plugin:@typescript-eslint/recommended",
-      "prettier"
+      "prettier",
     ),
 
     plugins: {

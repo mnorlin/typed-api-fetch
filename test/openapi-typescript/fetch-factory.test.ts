@@ -37,7 +37,7 @@ describe("generated fetch from 'createFetch' with no options", () => {
     defaultFetch("/store/inventory", { method: "get" });
 
     expect(((global.fetch as jest.Mock).mock.calls[0] as any)[0]).toBe(
-      "/store/inventory"
+      "/store/inventory",
     );
   });
 
@@ -45,7 +45,7 @@ describe("generated fetch from 'createFetch' with no options", () => {
     defaultFetch("/store/inventory", { method: "get" });
 
     const headers = Object.entries(
-      ((global.fetch as jest.Mock).mock.calls[0] as any)[1].headers
+      ((global.fetch as jest.Mock).mock.calls[0] as any)[1].headers,
     );
     expect(headers).toHaveLength(0);
   });
@@ -57,7 +57,7 @@ describe("generated fetch from 'createFetch' with no options", () => {
     });
 
     const headers = Object.entries(
-      ((global.fetch as jest.Mock).mock.calls[0] as any)[1].headers
+      ((global.fetch as jest.Mock).mock.calls[0] as any)[1].headers,
     );
     expect(headers).toHaveLength(1);
 
@@ -77,7 +77,7 @@ describe("generated fetch from 'createFetch' with custom options", () => {
     customFetch("/store/inventory", { method: "get" });
 
     expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
-      "https://petstore3.swagger.io/store/inventory"
+      "https://petstore3.swagger.io/store/inventory",
     );
   });
 
@@ -85,7 +85,7 @@ describe("generated fetch from 'createFetch' with custom options", () => {
     customFetch("/store/inventory", { method: "get" });
 
     const headers = Object.entries(
-      (mockedFetch.mock.calls[0] as any)[1].headers
+      (mockedFetch.mock.calls[0] as any)[1].headers,
     );
     expect(headers).toHaveLength(1);
     expect(headers[0][0]).toBe("Accept");
@@ -181,7 +181,7 @@ describe("Generated fetch request", () => {
     });
 
     expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
-      "https://petstore3.swagger.io/pet/42"
+      "https://petstore3.swagger.io/pet/42",
     );
   });
 
@@ -192,7 +192,7 @@ describe("Generated fetch request", () => {
     });
 
     expect((mockedFetch.mock.calls[0] as any)[0]).toBe(
-      "https://petstore3.swagger.io/pet/findByStatus?status=available"
+      "https://petstore3.swagger.io/pet/findByStatus?status=available",
     );
   });
 
@@ -203,7 +203,7 @@ describe("Generated fetch request", () => {
     });
 
     const headers = Object.entries(
-      (mockedFetch.mock.calls[0] as any)[1].headers
+      (mockedFetch.mock.calls[0] as any)[1].headers,
     );
     expect(headers).toHaveLength(2);
 
@@ -221,7 +221,7 @@ describe("Generated fetch request", () => {
     });
 
     const headers = Object.entries(
-      (mockedFetch.mock.calls[0] as any)[1].headers
+      (mockedFetch.mock.calls[0] as any)[1].headers,
     );
     expect(headers).toHaveLength(1);
 
@@ -235,7 +235,7 @@ describe("Generated fetch request", () => {
     customFetch("/store/inventory", { method: "get" });
 
     const headers = Object.entries(
-      (mockedFetch.mock.calls[0] as any)[1].headers
+      (mockedFetch.mock.calls[0] as any)[1].headers,
     );
 
     expect(headers).toHaveLength(1);
@@ -283,7 +283,7 @@ describe("Generated fetch request", () => {
     });
 
     expect((mockedFetch.mock.calls[0] as any)[1].body).toBe(
-      JSON.stringify(body)
+      JSON.stringify(body),
     );
   });
 

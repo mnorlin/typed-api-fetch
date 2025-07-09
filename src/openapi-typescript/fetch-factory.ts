@@ -4,6 +4,7 @@ import {
   AllFetchOptions,
   OpenapiPaths,
   FetchOptions,
+  FetchMethods,
 } from "./types/fetch-options";
 import { queryBuilder } from "./query-builder";
 import { pathBuilder } from "./path-builder";
@@ -24,10 +25,12 @@ function fetchFactory<Paths>(options?: InitParameters) {
 
   async function fetcher<
     Path extends keyof Paths,
-    Method extends keyof Paths[Path],
+    Method extends FetchMethods<Paths[Path]>,
     Operation extends Paths[Path][Method],
   >(input: Path, init: { method: Method } & FetchOptions<Operation>) {
-    const options = init as unknown as { method: Method } & AllFetchOptions;
+    const options = init as unknown as {
+      method: Method;
+    } & AllFetchOptions;
 
     const qBuilder = queryBuilder({
       style: serialization?.query?.style ?? "form",

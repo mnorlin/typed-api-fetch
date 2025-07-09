@@ -36,6 +36,13 @@ export type OpenapiPaths<Paths> = {
 };
 
 /**
+ * Extracts the available HTTP methods
+ */
+export type FetchMethods<T> = {
+  [K in keyof T & HttpMethod]: T[K] extends never | undefined ? never : K;
+}[keyof T & HttpMethod];
+
+/**
  * Extract available paths from openapi-typescript paths type.
  */
 export type SubPaths<Paths, Method extends HttpMethod = HttpMethod> = {

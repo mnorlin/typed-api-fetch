@@ -29,4 +29,5 @@ export type HttpMethod =
   | "patch"
   | "delete"
   | "head"
-  | "options";
+  | "options"
+  | "trace";

@@ -5,112 +5,291 @@
 
 export interface paths {
   "/pet": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
     /**
-     * Update an existing pet
-     * @description Update an existing pet by Id
+     * Update an existing pet.
+     * @description Update an existing pet by Id.
      */
     put: operations["updatePet"];
     /**
-     * Add a new pet to the store
-     * @description Add a new pet to the store
+     * Add a new pet to the store.
+     * @description Add a new pet to the store.
      */
     post: operations["addPet"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/pet/findByStatus": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /**
-     * Finds Pets by status
-     * @description Multiple status values can be provided with comma separated strings
+     * Finds Pets by status.
+     * @description Multiple status values can be provided with comma separated strings.
      */
     get: operations["findPetsByStatus"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/pet/findByTags": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /**
-     * Finds Pets by tags
+     * Finds Pets by tags.
      * @description Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
      */
     get: operations["findPetsByTags"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/pet/{petId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /**
-     * Find pet by ID
-     * @description Returns a single pet
+     * Find pet by ID.
+     * @description Returns a single pet.
      */
     get: operations["getPetById"];
-    /** Updates a pet in the store with form data */
+    put?: never;
+    /**
+     * Updates a pet in the store with form data.
+     * @description Updates a pet resource based on the form data.
+     */
     post: operations["updatePetWithForm"];
-    /** Deletes a pet */
+    /**
+     * Deletes a pet.
+     * @description Delete a pet.
+     */
     delete: operations["deletePet"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/pet/{petId}/uploadImage": {
-    /** uploads an image */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
+    /**
+     * Uploads an image.
+     * @description Upload image of the pet.
+     */
     post: operations["uploadFile"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/store/inventory": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /**
-     * Returns pet inventories by status
-     * @description Returns a map of status codes to quantities
+     * Returns pet inventories by status.
+     * @description Returns a map of status codes to quantities.
      */
     get: operations["getInventory"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/store/order": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
-     * Place an order for a pet
-     * @description Place a new order in the store
+     * Place an order for a pet.
+     * @description Place a new order in the store.
      */
     post: operations["placeOrder"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/store/order/{orderId}": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /**
-     * Find purchase order by ID
+     * Find purchase order by ID.
      * @description For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
      */
     get: operations["getOrderById"];
+    put?: never;
+    post?: never;
     /**
-     * Delete purchase order by ID
-     * @description For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
+     * Delete purchase order by identifier.
+     * @description For valid response try integer IDs with value < 1000. Anything above 1000 or non-integers will generate API errors.
      */
     delete: operations["deleteOrder"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/user": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
-     * Create user
+     * Create user.
      * @description This can only be done by the logged in user.
      */
     post: operations["createUser"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/user/createWithList": {
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    get?: never;
+    put?: never;
     /**
-     * Creates list of users with given input array
-     * @description Creates list of users with given input array
+     * Creates list of users with given input array.
+     * @description Creates list of users with given input array.
      */
     post: operations["createUsersWithListInput"];
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/user/login": {
-    /** Logs user into the system */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Logs user into the system.
+     * @description Log into the system.
+     */
     get: operations["loginUser"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/user/logout": {
-    /** Logs out current logged in user session */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Logs out current logged in user session.
+     * @description Log user out of the system.
+     */
     get: operations["logoutUser"];
+    put?: never;
+    post?: never;
+    delete?: never;
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
   "/user/{username}": {
-    /** Get user by user name */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    /**
+     * Get user by user name.
+     * @description Get user detail based on username.
+     */
     get: operations["getUserByName"];
     /**
-     * Update user
+     * Update user resource.
      * @description This can only be done by the logged in user.
      */
     put: operations["updateUser"];
+    post?: never;
     /**
-     * Delete user
+     * Delete user resource.
      * @description This can only be done by the logged in user.
      */
     delete: operations["deleteUser"];
+    options?: never;
+    head?: never;
+    patch?: never;
+    trace?: never;
   };
 }
-
 export type webhooks = Record<string, never>;
-
 export interface components {
   schemas: {
     Order: {
@@ -138,26 +317,6 @@ export interface components {
        */
       status?: "placed" | "approved" | "delivered";
       complete?: boolean;
-    };
-    Customer: {
-      /**
-       * Format: int64
-       * @example 100000
-       */
-      id?: number;
-      /** @example fehguy */
-      username?: string;
-      address?: components["schemas"]["Address"][];
-    };
-    Address: {
-      /** @example 437 Lytton */
-      street?: string;
-      /** @example Palo Alto */
-      city?: string;
-      /** @example CA */
-      state?: string;
-      /** @example 94301 */
-      zip?: string;
     };
     Category: {
       /**
@@ -226,14 +385,14 @@ export interface components {
   parameters: never;
   requestBodies: {
     /** @description Pet object that needs to be added to the store */
-    Pet?: {
+    Pet: {
       content: {
         "application/json": components["schemas"]["Pet"];
         "application/xml": components["schemas"]["Pet"];
       };
     };
     /** @description List of user object */
-    UserArray?: {
+    UserArray: {
       content: {
         "application/json": components["schemas"]["User"][];
       };
@@ -242,15 +401,15 @@ export interface components {
   headers: never;
   pathItems: never;
 }
-
-export type external = Record<string, never>;
-
+export type $defs = Record<string, never>;
 export interface operations {
   updatePet: {
-    /**
-     * Update an existing pet
-     * @description Update an existing pet by Id
-     */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** @description Update an existent pet in the store */
     requestBody: {
       content: {
@@ -262,24 +421,51 @@ export interface operations {
     responses: {
       /** @description Successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["Pet"];
           "application/json": components["schemas"]["Pet"];
+          "application/xml": components["schemas"]["Pet"];
         };
       };
       /** @description Invalid ID supplied */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Pet not found */
-      404: never;
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Validation exception */
-      405: never;
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   addPet: {
-    /**
-     * Add a new pet to the store
-     * @description Add a new pet to the store
-     */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** @description Create a new pet in the store */
     requestBody: {
       content: {
@@ -291,131 +477,250 @@ export interface operations {
     responses: {
       /** @description Successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["Pet"];
           "application/json": components["schemas"]["Pet"];
+          "application/xml": components["schemas"]["Pet"];
         };
       };
       /** @description Invalid input */
-      405: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation exception */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   findPetsByStatus: {
-    /**
-     * Finds Pets by status
-     * @description Multiple status values can be provided with comma separated strings
-     */
-    parameters?: {
-      /** @description Status values that need to be considered for filter */
+    parameters: {
       query?: {
+        /** @description Status values that need to be considered for filter */
         status?: "available" | "pending" | "sold";
       };
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["Pet"][];
           "application/json": components["schemas"]["Pet"][];
+          "application/xml": components["schemas"]["Pet"][];
         };
       };
       /** @description Invalid status value */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   findPetsByTags: {
-    /**
-     * Finds Pets by tags
-     * @description Multiple tags can be provided with comma separated strings. Use tag1, tag2, tag3 for testing.
-     */
-    parameters?: {
-      /** @description Tags to filter by */
+    parameters: {
       query?: {
+        /** @description Tags to filter by */
         tags?: string[];
       };
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["Pet"][];
           "application/json": components["schemas"]["Pet"][];
+          "application/xml": components["schemas"]["Pet"][];
         };
       };
       /** @description Invalid tag value */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   getPetById: {
-    /**
-     * Find pet by ID
-     * @description Returns a single pet
-     */
     parameters: {
-      /** @description ID of pet to return */
+      query?: never;
+      header?: never;
       path: {
+        /** @description ID of pet to return */
         petId: number;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["Pet"];
           "application/json": components["schemas"]["Pet"];
+          "application/xml": components["schemas"]["Pet"];
         };
       };
       /** @description Invalid ID supplied */
-      400: never;
-      404: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Pet not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   updatePetWithForm: {
-    /** Updates a pet in the store with form data */
     parameters: {
-      /** @description Name of pet that needs to be updated */
-      /** @description Status of pet that needs to be updated */
       query?: {
+        /** @description Name of pet that needs to be updated */
         name?: string;
+        /** @description Status of pet that needs to be updated */
         status?: string;
       };
-      /** @description ID of pet that needs to be updated */
+      header?: never;
       path: {
+        /** @description ID of pet that needs to be updated */
         petId: number;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content: {
+          "application/json": components["schemas"]["Pet"];
+          "application/xml": components["schemas"]["Pet"];
+        };
+      };
       /** @description Invalid input */
-      405: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   deletePet: {
-    /** Deletes a pet */
     parameters: {
+      query?: never;
       header?: {
         api_key?: string;
       };
-      /** @description Pet id to delete */
       path: {
+        /** @description Pet id to delete */
         petId: number;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
+      /** @description Pet deleted */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Invalid pet value */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   uploadFile: {
-    /** uploads an image */
     parameters: {
-      /** @description Additional Metadata */
       query?: {
+        /** @description Additional Metadata */
         additionalMetadata?: string;
       };
-      /** @description ID of pet to update */
+      header?: never;
       path: {
+        /** @description ID of pet to update */
         petId: number;
       };
+      cookie?: never;
     };
     requestBody?: {
       content: {
@@ -425,33 +730,72 @@ export interface operations {
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["ApiResponse"];
         };
       };
+      /** @description No file uploaded */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Pet not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   getInventory: {
-    /**
-     * Returns pet inventories by status
-     * @description Returns a map of status codes to quantities
-     */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": {
-            [key: string]: number | undefined;
+            [key: string]: number;
           };
         };
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
       };
     };
   };
   placeOrder: {
-    /**
-     * Place an order for a pet
-     * @description Place a new order in the store
-     */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     requestBody?: {
       content: {
         "application/json": components["schemas"]["Order"];
@@ -462,62 +806,130 @@ export interface operations {
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["Order"];
         };
       };
       /** @description Invalid input */
-      405: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Validation exception */
+      422: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   getOrderById: {
-    /**
-     * Find purchase order by ID
-     * @description For valid response try integer IDs with value <= 5 or > 10. Other values will generate exceptions.
-     */
     parameters: {
-      /** @description ID of order that needs to be fetched */
+      query?: never;
+      header?: never;
       path: {
+        /** @description ID of order that needs to be fetched */
         orderId: number;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["Order"];
           "application/json": components["schemas"]["Order"];
+          "application/xml": components["schemas"]["Order"];
         };
       };
       /** @description Invalid ID supplied */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Order not found */
-      404: never;
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   deleteOrder: {
-    /**
-     * Delete purchase order by ID
-     * @description For valid response try integer IDs with value < 1000. Anything above 1000 or nonintegers will generate API errors
-     */
     parameters: {
-      /** @description ID of the order that needs to be deleted */
+      query?: never;
+      header?: never;
       path: {
+        /** @description ID of the order that needs to be deleted */
         orderId: number;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
+      /** @description order deleted */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Invalid ID supplied */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Order not found */
-      404: never;
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   createUser: {
-    /**
-     * Create user
-     * @description This can only be done by the logged in user.
-     */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     /** @description Created user object */
     requestBody?: {
       content: {
@@ -528,19 +940,31 @@ export interface operations {
     };
     responses: {
       /** @description successful operation */
-      default: {
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
           "application/json": components["schemas"]["User"];
           "application/xml": components["schemas"]["User"];
         };
       };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   createUsersWithListInput: {
-    /**
-     * Creates list of users with given input array
-     * @description Creates list of users with given input array
-     */
+    parameters: {
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
+    };
     requestBody?: {
       content: {
         "application/json": components["schemas"]["User"][];
@@ -549,25 +973,36 @@ export interface operations {
     responses: {
       /** @description Successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["User"];
           "application/json": components["schemas"]["User"];
+          "application/xml": components["schemas"]["User"];
         };
       };
-      /** @description successful operation */
-      default: never;
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   loginUser: {
-    /** Logs user into the system */
-    parameters?: {
-      /** @description The user name for login */
-      /** @description The password for login in clear text */
+    parameters: {
       query?: {
+        /** @description The user name for login */
         username?: string;
+        /** @description The password for login in clear text */
         password?: string;
       };
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
@@ -576,6 +1011,7 @@ export interface operations {
           "X-Rate-Limit"?: number;
           /** @description date in UTC when token expires */
           "X-Expires-After"?: string;
+          [name: string]: unknown;
         };
         content: {
           "application/xml": string;
@@ -583,48 +1019,100 @@ export interface operations {
         };
       };
       /** @description Invalid username/password supplied */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   logoutUser: {
-    /** Logs out current logged in user session */
-    responses: {
-      /** @description successful operation */
-      default: never;
-    };
-  };
-  getUserByName: {
-    /** Get user by user name */
     parameters: {
-      /** @description The name that needs to be fetched. Use user1 for testing. */
-      path: {
-        username: string;
-      };
+      query?: never;
+      header?: never;
+      path?: never;
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
       /** @description successful operation */
       200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+    };
+  };
+  getUserByName: {
+    parameters: {
+      query?: never;
+      header?: never;
+      path: {
+        /** @description The name that needs to be fetched. Use user1 for testing */
+        username: string;
+      };
+      cookie?: never;
+    };
+    requestBody?: never;
+    responses: {
+      /** @description successful operation */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
         content: {
-          "application/xml": components["schemas"]["User"];
           "application/json": components["schemas"]["User"];
+          "application/xml": components["schemas"]["User"];
         };
       };
       /** @description Invalid username supplied */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description User not found */
-      404: never;
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   updateUser: {
-    /**
-     * Update user
-     * @description This can only be done by the logged in user.
-     */
     parameters: {
-      /** @description name that need to be deleted */
+      query?: never;
+      header?: never;
       path: {
+        /** @description name that need to be deleted */
         username: string;
       };
+      cookie?: never;
     };
     /** @description Update an existent user in the store */
     requestBody?: {
@@ -636,25 +1124,75 @@ export interface operations {
     };
     responses: {
       /** @description successful operation */
-      default: never;
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description bad request */
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description user not found */
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
   deleteUser: {
-    /**
-     * Delete user
-     * @description This can only be done by the logged in user.
-     */
     parameters: {
-      /** @description The name that needs to be deleted */
+      query?: never;
+      header?: never;
       path: {
+        /** @description The name that needs to be deleted */
         username: string;
       };
+      cookie?: never;
     };
+    requestBody?: never;
     responses: {
+      /** @description User deleted */
+      200: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description Invalid username supplied */
-      400: never;
+      400: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
       /** @description User not found */
-      404: never;
+      404: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
+      /** @description Unexpected error */
+      default: {
+        headers: {
+          [name: string]: unknown;
+        };
+        content?: never;
+      };
     };
   };
 }

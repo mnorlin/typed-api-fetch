@@ -28,12 +28,10 @@ export type OperationHttpHeaders<Operation> = OperationParameters<
 type OperationParameters<
   Operation,
   ParameterType extends "path" | "query" | "header",
-> = Operation extends {
-  parameters?: infer AllParameters;
-}
-  ? AllParameters extends {
-      [key in ParameterType]?: infer PathParameters;
-    }
-    ? PathParameters
+> = Operation extends { parameters?: infer AllParameters }
+  ? AllParameters extends { [key in ParameterType]?: infer Param }
+    ? [Param] extends [never] | [undefined]
+      ? never
+      : Param
     : never
   : never;

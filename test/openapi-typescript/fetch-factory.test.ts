@@ -1,4 +1,4 @@
-import createFetch, { FetchMethods } from "../../src/openapi-typescript";
+import createFetch from "../../src/openapi-typescript";
 import { paths, components } from "./test-data/petstore-openapi3";
 import { IsEqual } from "../test-tools";
 

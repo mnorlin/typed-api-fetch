@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.9.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.8.0...v0.9.0) (2025-07-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* support latest openapi-typescript output
+
+### Features
+
+* support latest openapi-typescript output ([7992aef](https://github.com/mnorlin/typed-api-fetch/commit/7992aefe07937e82efb8eb63db2322ec8f72c2ed))
+
 ## [0.8.0](https://github.com/mnorlin/typed-api-fetch/compare/v0.7.0...v0.8.0) (2023-09-03)
 
 
